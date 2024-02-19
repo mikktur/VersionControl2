@@ -1,4 +1,4 @@
-
+import java.util.Scanner;
 
 
 public class PalindromeChecker {
@@ -8,9 +8,9 @@ public class PalindromeChecker {
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
 
-        String transformed = transformInput(input);
+        String cleanedInput = cleanInput(input);
 
-        boolean isPalindrome = checkPalindrome(transformed);
+        boolean isPalindrome = checkPalindrome(cleanedInput);
         if (isPalindrome) {
             System.out.println("The transformed input is a palindrome.");
         } else {
@@ -18,7 +18,7 @@ public class PalindromeChecker {
         }
     }
 
-    public static String transformInput(String input) {
+    public static String cleanInput(String input) { // remove punctuation,exclamationmarks and convert to lowercase
         input = input.toLowerCase();
         input = input.replace(",", "");
         input = input.replace("!", "");
@@ -26,12 +26,7 @@ public class PalindromeChecker {
     }
 
     public static boolean checkPalindrome(String input) {
-        String reversed = reverseString(input);
-        if (input.equals(reversed)) {
-            return true;
-        } else {
-            return false;
-        }
+        return input.equals(reverseString(input));
     }
 
     public static String reverseString(String input) {
